@@ -1,18 +1,6 @@
 # Blackjack
 
-The objectives of this exercise are:
-
-* Write a game that is multiplayer and turn based like Pig
-* Use a more complicated rule set
-* Learn to use namedtuples to represent data
-* Learn to use object serialization to save data to a file
-* Improving our programming practices
-
-We shall all write the card game named [Blackjack](https://en.wikipedia.org/wiki/Blackjack). Blackjack is a casino banking game where the player competes against the house or casino to have the best hand of cards. Unlike many other familiar card games, the players do not compete against each other or help one another. The game is played using one or more decks of common playing cards, also known as a French decks.
-
-In your [recommended reading](https://docs.google.com/document/d/184U-IQ0DrmlVlPMySjKaYxq2M-ScNvgX8NRa1Kkuk9Q/edit), the book [_Luck, logic, and white lies : the mathematics of games_](https://csu-fullerton.primo.exlibrisgroup.com/permalink/01CALS_FUL/10o4t9/alma991013418479202908) offers a brief and excellent introduction to the mathematics of Blackjack in Chapter 17. You are strongly encouraged to read this chapter.
-
-Since there are so many variations, it is important that you pay close attention to the rules and requirements described in this assignment. Please do not adopt rules that you may use with your friends or what you may have experienced at a Casino.
+Write the card game named [Blackjack](https://en.wikipedia.org/wiki/Blackjack). Blackjack is a casino banking game where the player competes against the house or casino to have the best hand of cards. Unlike many other familiar card games, the players do not compete against each other or help one another. The game is played using one or more decks of common playing cards, also known as a French decks.
 
 In the game, the dealer represents the house/bank/casino. There must be at least one player. The dealer shuffles 8 decks of cards and cuts the deck. A _cut card_ is placed randomly between the 60th and 80th card from the bottom of the deck. All the cards are placed in a [_shoe_](https://en.wikipedia.org/wiki/Shoe_(cards)) which the dealer uses to deal cards one at a time. When the dealer reaches the _cut card_, then, when the game ends, the cards are shuffled, cut, a _cut card_ is placed and the cards are returned to the _shoe_.
 
@@ -24,7 +12,7 @@ Once those initial decisions are made, the player chooses to _hit_, take a card,
 
 A player wins when their hand has a higher value than the dealer's yet is not greater than 21. Players that pass 21 are _busted_ which means they loose their bet regardless of what the dealer does.
 
-When a player and the dealer have the same value for their respective hands, then this is a _push_. A _push_ means that no one wins and the player does not lose her wager.
+When a player and the dealer have the same value for their respective hands, then this is a _push_. A _push_ means that no one wins and the player does not lose their wager.
 
 The dealer is always last to play. The dealer begins by turning over the face down card and deciding to _hit_ or _stand_. Unlike the players, the dealer must _hit_ if their hand value is less than 17. If the value of their hand is 17 or greater, then the dealer _stands_. If all the players have already _busted_ the dealer _stands_ thus removing the chance that the dealer may _bust_ as well.
 
@@ -98,34 +86,6 @@ To summarize the order of game play operations:
 1. The dealer plays last. If there exists a player who is not busted, then the dealer must play their hand according to the rules. Otherwise, the dealer stands.
 1. For each player, determine if the player has won, lost, or _pushed_. Update all the players' balances to reflect the outcome of the game.
 
-## Requirements
+#Running the game
+To run the game, the command must be `./blackjack.py`in terminal.  
 
-The requirements of the program are that the game must play according to the rules given above. If there is any ambiguity of the rules, the the student should discuss the rules with the instructor to clarify the rules.
-
-The game must be written in Python 3. Limit your game to use only what is available in the Python Standard Library. Do not use additional Python modules that are outside of the Python Standard Library.
-
-To run the game, the command must be `./blackjack.py`. This means that the file `blackjack.py` must have a shebang and call the main game loop. This file contains only a call to the game's main loop which is defined in the `blackjackgame` package.
-
-The game's logic must be defined in a package named `blackjackgame`. This means there must be a directory named `blackjackgame` which contains all the Python source code for the project. At a minimum, the following files must be included in the `piggame` package:
-* `__init__.py`
-* `cards.py`
-* `game.py`
-* `player.py`
-
-The file `__init__.py` can be a very simple file which defines an `__all__` variable for the package. See the documentation about [Python modules](https://docs.python.org/3/tutorial/modules.html), specifically [Section 6.4.1. Importing * From a Package](https://docs.python.org/3/tutorial/modules.html#importing-from-a-package).
-
-The file `cards.py` defines the playing cards and deck class along with any other supporting classes and functions needed to realize the game. _The card class must be defined as a named tuple._
-
-The file `game.py` defines the game loop and any other supporting classes and functions needed to realize the game. The game loop may be defined as a function or as a class.
-
-The file `player.py` defines the human player class and the _computer AI_. Additional classes and functions related to the players may be included as well. The player class must be serializable to a [Python Pickle](https://docs.python.org/3/library/pickle.html) such that their bank balance can be recalled when the game restarts.
-
-The source file that is the executable file shall be named `blackjack.py`, and it shall be executable with a shebang at the top of the file.
-
-The user interface of the game is text. There are no graphics (2D, 3D, sprites, etc.) in this game. You may use Unicode characters in your program.
-
-If you would like to use audio effects or a soundtrack, you may however the program may only use what's available in the Python Standard Library.
-
-The _computer AI_ dealer must behave according to the rules specified.
-
-Since this game is a terminal based game, use [sleep](https://docs.python.org/3/library/time.html?highlight=sleep#time.sleep) or other similar mechanism to slow down the game to make the text appear on the screen slowly. Give the player an opportunity to read the text. A typewriter effect can be achieved with some creative use `time.sleep` with values less than 1 second.
